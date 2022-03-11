@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChopChopRTS : MonoBehaviour {
+public class MoveUnitsController : MonoBehaviour {
 
     private GameRTSController gameRTSController;
     private Camera mainCamera;
