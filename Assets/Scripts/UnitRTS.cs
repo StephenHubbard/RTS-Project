@@ -16,10 +16,12 @@ public class UnitRTS : MonoBehaviour
     [SerializeField] private IUnitBehaviour unitBehaviour;
     private NavMeshAgent navMeshAgent;
     private bool isSelected;
+    private UnitVisual unitVisual;
 
     private void Awake() {
         navMeshAgent = GetComponent<NavMeshAgent>();
         unitBehaviour = GetComponent<UnitBehaviorNormal>();
+        unitVisual = GetComponent<UnitVisual>();
     }
 
     private void Start() {
@@ -37,6 +39,7 @@ public class UnitRTS : MonoBehaviour
 
     public void StopMoving()
     {
+        unitVisual.UnitIsRunning(false);
         navMeshAgent.isStopped = true;
         OnStoppedMoving?.Invoke(this, EventArgs.Empty);
     }
@@ -78,6 +81,7 @@ public class UnitRTS : MonoBehaviour
     }
 
     public void NormalMoveTo(Vector3 destinationPosition) {
+        unitVisual.UnitIsRunning(true);
         GetComponent<UnitBehaviorNormal>().MoveTo(destinationPosition);
     }
 
