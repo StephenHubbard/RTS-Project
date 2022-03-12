@@ -15,10 +15,10 @@ public class CameraTarget : MonoBehaviour {
     [SerializeField] private Axis axis = Axis.XZ;
     [SerializeField] private float moveSpeed = 50f;
     [SerializeField] private Volume postProcessingVolume;
+    [SerializeField] private float depthOfFieldOffset = 13.5f;
 
     private float cameraY;
     private DepthOfField depthOfField;
-    private float depthOfFieldOffset = 13.5f;
 
     private void Awake() {
         cameraY = transform.position.y;
@@ -68,7 +68,7 @@ public class CameraTarget : MonoBehaviour {
 
         float zoomSpeed = 1f;
         cameraY += -Input.mouseScrollDelta.y * zoomSpeed;
-        cameraY = Mathf.Clamp(cameraY, -3f, 17);
+        cameraY = Mathf.Clamp(cameraY, -3f, 40);
         transform.position = new Vector3(transform.position.x, cameraY, transform.position.z);
 
         depthOfField.focusDistance.value = (cameraY * .5f) + depthOfFieldOffset;
