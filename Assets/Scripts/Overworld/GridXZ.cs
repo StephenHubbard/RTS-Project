@@ -80,14 +80,15 @@ public class GridXZ<TGridObject> {
         }
     }
 
-    public void TriggerGridObjectChanged(int x, int z) {
-        OnGridObjectChanged?.Invoke(this, new OnGridObjectChangedEventArgs { x = x, z = z });
-    }
-
     public void SetGridObject(Vector3 worldPosition, TGridObject value) {
         GetXZ(worldPosition, out int x, out int z);
         SetGridObject(x, z, value);
     }
+    
+    public void TriggerGridObjectChanged(int x, int z) {
+        OnGridObjectChanged?.Invoke(this, new OnGridObjectChangedEventArgs { x = x, z = z });
+    }
+
 
     public TGridObject GetGridObject(int x, int z) {
         if (x >= 0 && z >= 0 && x < width && z < height) {
