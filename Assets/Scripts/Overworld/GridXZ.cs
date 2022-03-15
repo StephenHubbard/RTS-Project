@@ -6,6 +6,7 @@ using CodeMonkey.Utils;
 
 public class GridXZ<TGridObject> {
 
+
     public event EventHandler<OnGridObjectChangedEventArgs> OnGridObjectChanged;
     public class OnGridObjectChangedEventArgs : EventArgs {
         public int x;
@@ -84,7 +85,7 @@ public class GridXZ<TGridObject> {
         GetXZ(worldPosition, out int x, out int z);
         SetGridObject(x, z, value);
     }
-    
+
     public void TriggerGridObjectChanged(int x, int z) {
         OnGridObjectChanged?.Invoke(this, new OnGridObjectChangedEventArgs { x = x, z = z });
     }
